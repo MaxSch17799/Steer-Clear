@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,22 +63,10 @@
       <p>
         Interested in improving safety for your ground operations? Reach out to discuss partnerships, pilot programs, or to learn more about Steer-Clear.
       </p>
-      <!-- Form 1: Sends to max@steerclear.se -->
-      <form class="contact-form" action="https://formsubmit.co/max@steerclear.se" method="POST" target="_blank">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="How can we help you?" required></textarea>
-        <input type="hidden" name="_captcha" value="false">
-        <button type="submit" style="display:none;">Send to Max</button>
-      </form>
-
-      <!-- Form 2: Sends to alina@steerclear.se -->
-      <form class="contact-form" action="https://formsubmit.co/alina@steerclear.se" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="How can we help you?" required></textarea>
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+      <form class="contact-form" action="mailto:info@steer-clear.com" method="POST" enctype="text/plain">
+        <input type="text" name="Name" placeholder="Your Name" required />
+        <input type="email" name="Email" placeholder="Your Email" required />
+        <textarea name="Message" placeholder="How can we help you?" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
