@@ -128,108 +128,16 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(24, 114, 217, 0.14);
 }
-
-/* TEAM SECTION */
-.team-section {
-  background: linear-gradient(120deg,#205298 30%,#eaf6ef 100%);
-}
-.team-section h2 {
-  color: #fff;
-  margin-bottom: 40px;
-}
-.team-wrapper {
-  display: flex;
-  gap: 48px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.team-member-card {
-  background: rgba(255,255,255,0.97);
-  box-shadow: 0 4px 24px rgba(24, 114, 217, 0.1);
-  border-radius: 12px;
-  padding: 24px 20px;
-  max-width: 320px;
-  flex: 1 1 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.team-photo {
-  width: 100%;
-  max-width: 220px;
-  border-radius: 10px;
-  margin-bottom: 18px;
-  object-fit: cover;
-  aspect-ratio: 2/2.5;
-  box-shadow: 0 2px 10px rgba(24, 114, 217, 0.12);
-}
-.team-info {
-  text-align: center;
-}
-.team-info h3 {
-  margin: 0 0 2px 0;
-  font-size: 1.18rem;
-  color: #1872d9;
-}
-.team-info p {
-  font-size: 0.99rem;
-  margin: 3px 0;
-  color: #222;
-}
-
-/* CONTACT SECTION */
 .contact-content {
-  max-width: 1200px;
+  max-width: 650px;
   margin: 0 auto;
   text-align: center;
-}
-.team-contact-wrapper {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 36px;
-}
-.team-contact-card {
-  background: #fff;
-  box-shadow: 0 4px 24px rgba(24, 114, 217, 0.07);
-  border-radius: 12px;
-  padding: 28px 22px 22px 22px;
-  max-width: 350px;
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.team-contact-photo {
-  width: 100%;
-  max-width: 220px;
-  border-radius: 10px;
-  margin-bottom: 18px;
-  object-fit: cover;
-  aspect-ratio: 2/2.5;
-  box-shadow: 0 2px 10px rgba(24, 114, 217, 0.12);
-}
-.team-contact-info {
-  text-align: center;
-  margin-bottom: 18px;
-}
-.team-contact-info h3 {
-  margin: 0 0 2px 0;
-  font-size: 1.18rem;
-  color: #1872d9;
-}
-.team-contact-info p {
-  font-size: 0.99rem;
-  margin: 3px 0;
-  color: #222;
 }
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  margin-top: 10px;
-  width: 100%;
+  margin-top: 24px;
 }
 .contact-form input,
 .contact-form textarea {
@@ -264,16 +172,11 @@ body {
   margin-top: 40px;
 }
 @media (max-width: 900px) {
-  .hero-content, .solution-content, .team-wrapper, .team-contact-wrapper {
+  .hero-content, .solution-content {
     flex-direction: column;
     text-align: center;
-    gap: 32px;
   }
-  .hero-img, .solution-img, .team-photo, .team-contact-photo {
+  .hero-img, .solution-img {
     margin: 30px 0 0 0;
-  }
-  .team-member-card, .team-contact-card {
-    max-width: 95vw;
-    width: 100%;
   }
 }
