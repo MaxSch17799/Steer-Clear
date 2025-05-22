@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Maximilian Schimmel | Steer-Clear</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <img src="logo-steerclear.png" alt="Steer-Clear Logo" height="44" />
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+          <button class="dropbtn">Sub Pages ▼</button>
+          <div class="dropdown-content">
+            <a href="contact-alina.html">Contact Alina Krüger</a>
+            <a href="contact-max.html">Contact Maximilian Schimmel</a>
+            <a href="project-progress.html">Project Progress</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section contact-page-section">
+    <div class="container contact-content">
+      <h2>Contact Maximilian Schimmel</h2>
+      <div class="team-contact-card contact-only">
+        <img src="maximilian.jpg" alt="Maximilian Schimmel" class="team-contact-photo" />
+        <div class="team-contact-info">
+          <h3>Maximilian Schimmel</h3>
+          <p><strong>CTO</strong></p>
+          <p>B.Sc. Aeronautical Engineering (Hons.)<br>
+            Student in M.Sc. All-Electric Propulsion Systems<br>
+            Dutch Aerospace Awards 2024: André Kuipers Space Prize
+          </p>
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/max@steerclear.se" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="How can we help you?" required></textarea>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+          <button type="submit">Send to Max</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <span>&copy; 2025 Steer-Clear. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>

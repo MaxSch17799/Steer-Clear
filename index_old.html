@@ -16,6 +16,7 @@
       <div class="nav-links">
         <a href="#mission">Mission</a>
         <a href="#solution">Solution</a>
+        <a href="#team">Team</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -57,18 +58,86 @@
     </div>
   </section>
 
+  <section id="team" class="section team-section">
+    <div class="container">
+      <h2>Meet the Team</h2>
+      <div class="team-wrapper">
+        <!-- Alina Krüger -->
+        <div class="team-member-card">
+          <img src="alina.jpg" alt="Alina Krüger" class="team-photo" />
+          <div class="team-info">
+            <h3>Alina Krüger</h3>
+            <p><strong>CEO</strong></p>
+            <p>B.Sc. Aeronautical Engineering (Hons.)<br>
+              Student in M.Sc. Technology-based Entrepreneurship<br>
+              Dutch Aerospace Awards 2024: André Kuipers Space Prize
+            </p>
+          </div>
+        </div>
+        <!-- Maximilian Schimmel -->
+        <div class="team-member-card">
+          <img src="maximilian.jpg" alt="Maximilian Schimmel" class="team-photo" />
+          <div class="team-info">
+            <h3>Maximilian Schimmel</h3>
+            <p><strong>CTO</strong></p>
+            <p>B.Sc. Aeronautical Engineering (Hons.)<br>
+              Student in M.Sc. All-Electric Propulsion Systems<br>
+              Dutch Aerospace Awards 2024: André Kuipers Space Prize
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="section">
     <div class="container contact-content">
       <h2>Contact Us</h2>
       <p>
         Interested in improving safety for your ground operations? Reach out to discuss partnerships, pilot programs, or to learn more about Steer-Clear.
       </p>
-      <form class="contact-form" action="mailto:info@steer-clear.com" method="POST" enctype="text/plain">
-        <input type="text" name="Name" placeholder="Your Name" required />
-        <input type="email" name="Email" placeholder="Your Email" required />
-        <textarea name="Message" placeholder="How can we help you?" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <div class="team-contact-wrapper">
+        <!-- Alina Krüger Contact Card -->
+        <div class="team-contact-card">
+          <img src="alina.jpg" alt="Alina Krüger" class="team-contact-photo" />
+          <div class="team-contact-info">
+            <h3>Alina Krüger</h3>
+            <p><strong>CEO</strong></p>
+            <p>B.Sc. Aeronautical Engineering (Hons.)<br>
+              Student in M.Sc. Technology-based Entrepreneurship<br>
+              Dutch Aerospace Awards 2024: André Kuipers Space Prize
+            </p>
+          </div>
+          <form class="contact-form" action="https://formsubmit.co/alina@steerclear.se" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="How can we help you?" required></textarea>
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+            <button type="submit">Contact Alina</button>
+          </form>
+        </div>
+        <!-- Maximilian Schimmel Contact Card -->
+        <div class="team-contact-card">
+          <img src="maximilian.jpg" alt="Maximilian Schimmel" class="team-contact-photo" />
+          <div class="team-contact-info">
+            <h3>Maximilian Schimmel</h3>
+            <p><strong>CTO</strong></p>
+            <p>B.Sc. Aeronautical Engineering (Hons.)<br>
+              Student in M.Sc. All-Electric Propulsion Systems<br>
+              Dutch Aerospace Awards 2024: André Kuipers Space Prize
+            </p>
+          </div>
+          <form class="contact-form" action="https://formsubmit.co/max@steerclear.se" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="How can we help you?" required></textarea>
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+            <button type="submit">Contact Max</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
