@@ -277,4 +277,31 @@ section.section {
     padding: 0;
   }
 }
+/* ===== Mobile nav fix (logo on top, ribbon below) ===== */
+@media (max-width: 900px) {
+  .nav-container {
+    flex-direction: column;     /* stack logo + nav */
+    align-items: center;
+    gap: 12px;                  /* space between logo and links */
+  }
+
+  .nav-links {
+    flex-direction: row;        /* keep links horizontal */
+    flex-wrap: wrap;            /* allow wrapping onto 2 lines if needed */
+    justify-content: center;    /* center under logo */
+    gap: 12px;
+    position: static;           /* no absolute positioning */
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;                /* stretch full width */
+  }
+
+  .dropdown-content {
+    position: absolute;         /* dropdown still overlays below button */
+    left: 0;
+    top: 100%;
+    min-width: 180px;
+  }
+}
 
