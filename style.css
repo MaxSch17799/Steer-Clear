@@ -265,3 +265,16 @@ section.section {
   padding-left: 18px;
 }
 .progress-points li { margin: 6px 0; }
+@media (max-width: 900px) {
+  .nav-links {
+    flex-direction: row;      /* keep horizontal */
+    flex-wrap: wrap;          /* allow 2 lines if needed */
+    align-items: center;
+    gap: 10px;
+    position: static;         /* no floating box */
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
