@@ -36,164 +36,163 @@
   </nav>
   <!-- =============== END NAVBAR =============== -->
 
-  <!-- ================= HERO HEADER ================= -->
+  <!-- ================= HERO ================= -->
   <header id="top" class="hero hero--compact">
     <div class="container hero-content">
       <div>
         <h1>Project Progress</h1>
-        <p class="subtitle">First MVP — summary of decisions, build, and validation</p>
+        <p class="subtitle">MVP functionality, validation, and robustness—summarized from the Draft Report</p>
       </div>
     </div>
   </header>
-  <!-- =============== END HERO HEADER =============== -->
+  <!-- =============== END HERO =============== -->
 
   <main>
-    <!-- ================= MVP OVERVIEW ================= -->
-    <section class="section blog-section" id="mvp-overview">
+    <!-- ================= WHAT THE MVP DOES ================= -->
+    <section class="section blog-section" id="what-it-does">
       <div class="container">
-        <h2>MVP Overview</h2>
+        <h2>What the MVP Does</h2>
         <p>
-          Our first MVP is a retrofit collision-avoidance aid for ground support vehicles. It uses
-          <strong>multiple ultrasonic sensors</strong> for distance measurement, a simple <strong>audio/visual UI</strong> for the operator,
-          and a <strong>microcontroller-based</strong> architecture designed for low cost, modularity, and fast installation. Power is sourced
-          from the vehicle’s 12–24&nbsp;V system, with wiring kept simple and robust.
+          The MVP assists ground-vehicle operators during low-speed docking by continuously measuring distances,
+          identifying the <em>closest hazard</em>, and giving escalating audio/visual cues so the driver can stop or correct in time.
+          It’s retrofit-friendly, modular, and designed for quick installation on existing fleets. :contentReference[oaicite:0]{index=0}
         </p>
-        <figure class="blog-figure">
-          <img src="conceptual-system.png" alt="Conceptual system block-diagram: sensors, master module, operator interface" class="blog-img">
-          <figcaption>Conceptual system (based on report Fig. 7 & Fig. 16).</figcaption>
-        </figure>
-      </div>
-    </section>
-    <!-- =============== END MVP OVERVIEW =============== -->
 
-    <!-- ================= KEY DECISIONS ================= -->
-    <section class="section blog-section" id="key-decisions">
-      <div class="container">
-        <h2>Key Design Decisions</h2>
-
-        <!-- Subsection: Distance Sensing -->
-        <h3>1) Distance Sensing</h3>
-        <p>
-          We evaluated IR/ToF, lidar, radar, and mechanical contact. For MVP we chose
-          <strong>ultrasonic (HC-SR04)</strong> for range (0–5&nbsp;m), accuracy (~±1&nbsp;cm), price, and simplicity.
-          IR/ToF under-performed outdoors and on certain surfaces; lidar/radar were overkill for cost/complexity.
-        </p>
-        <figure class="blog-figure">
-          <img src="sensor-hcsr04.jpg" alt="HC-SR04 ultrasonic distance sensor" class="blog-img">
-          <figcaption>Ultrasonic sensor chosen for MVP (report Fig. 11).</figcaption>
-        </figure>
-        <!-- End Subsection -->
-
-        <!-- Subsection: Redundancy -->
-        <h3>2) Redundancy & Filtering</h3>
-        <p>
-          We moved from 2 to <strong>5 sensors</strong> to enable majority voting and reject outliers. This improved robustness
-          and reduced false readings without complex filtering.
-        </p>
-        <!-- End Subsection -->
-
-        <!-- Subsection: Operator Feedback -->
-        <h3>3) Operator Feedback</h3>
-        <p>
-          The airport environment is noisy and time-critical. We combined <strong>audio beeper + LEDs</strong> for quick attention,
-          and added <strong>OLED + 20×4 LCD</strong> for detailed readouts and future expandability.
-        </p>
+        <!-- Show-off gallery (from report figures) -->
         <div class="figure-grid">
           <figure class="blog-figure">
-            <img src="display-oled-128x64.jpg" alt="128x64 OLED display" class="blog-img">
-            <figcaption>OLED 128×64 (report Fig. 18).</figcaption>
+            <img src="fig-16-conceptual-system.png" alt="Conceptual system: sensing modules reporting to master with operator alerts" class="blog-img">
+            <figcaption>Conceptual system (Report Fig. 16). :contentReference[oaicite:1]{index=1}</figcaption>
           </figure>
           <figure class="blog-figure">
-            <img src="display-lcd-2004.jpg" alt="HD44780 20x4 LCD module" class="blog-img">
-            <figcaption>HD44780 20×4 LCD (report Fig. 19).</figcaption>
-          </figure>
-          <figure class="blog-figure">
-            <img src="operator-led-panel.png" alt="Concept sketch of LED panel indicating closest corner" class="blog-img">
-            <figcaption>LED array concept (report Fig. 20).</figcaption>
+            <img src="fig-31-master-module.png" alt="Master module final design—operator interface and prioritization" class="blog-img">
+            <figcaption>Master module (Report Fig. 31). :contentReference[oaicite:2]{index=2}</figcaption>
           </figure>
         </div>
-        <!-- End Subsection -->
+      </div>
+    </section>
+    <!-- =============== END WHAT THE MVP DOES =============== -->
 
-        <!-- Subsection: Electronics -->
-        <h3>4) Electronics & Comms</h3>
-        <p>
-          Controller: <strong>Arduino Nano V3</strong> (cheap, small, plenty of I/O). Data bus: <strong>I²C</strong> (fast to implement on Nano; CAN considered for later).
-          Physical layer: <strong>wired copper</strong> for reliability and maintainability in the field.
-        </p>
-        <!-- End Subsection -->
+    <!-- ================= OPERATOR EXPERIENCE ================= -->
+    <section class="section blog-section" id="operator-experience">
+      <div class="container">
+        <h2>Operator Experience</h2>
+        <ul class="progress-points">
+          <li><strong>Clear priority:</strong> the system highlights the nearest side/corner so correction is obvious. :contentReference[oaicite:3]{index=3}</li>
+          <li><strong>Escalating alerts:</strong> faster beep + stronger visual as distance closes; screen gives detail when needed. :contentReference[oaicite:4]{index=4}</li>
+          <li><strong>Minimal training:</strong> users understand the cues quickly in tests and dry-runs. :contentReference[oaicite:5]{index=5}</li>
+        </ul>
 
-        <!-- Subsection: Mounting -->
-        <h3>5) Mounting & Modularity</h3>
-        <p>
-          We designed a <strong>flange-mount sensor housing</strong> with passive weather shielding (overhang + slanted roof) and
-          chose robust <strong>GX16-4 connectors</strong> for plug-and-play. Position identity is set via <strong>DIP switches</strong> to avoid reflashing firmware on repositioning.
-        </p>
         <div class="figure-grid">
           <figure class="blog-figure">
-            <img src="mounting-flange.png" alt="3D model of sensor mounting flange" class="blog-img">
-            <figcaption>Mounting flange (report Fig. 13).</figcaption>
+            <img src="fig-20-operator-board.png" alt="Conceptual operator LED array board indicating nearest direction" class="blog-img">
+            <figcaption>Operator LED concept (Report Fig. 20). :contentReference[oaicite:6]{index=6}</figcaption>
           </figure>
           <figure class="blog-figure">
-            <img src="sensor-housing.png" alt="Weather-shielded sensor housing with overhang" class="blog-img">
-            <figcaption>Weather-shielded housing (report Fig. 15; seals in Fig. 14).</figcaption>
-          </figure>
-          <figure class="blog-figure">
-            <img src="connector-gx16-4.jpg" alt="GX16-4 metal circular connector" class="blog-img">
-            <figcaption>GX16-4 connector (report Fig. 21).</figcaption>
-          </figure>
-          <figure class="blog-figure">
-            <img src="dip-switch-id.jpg" alt="DIP switch used for sensor position identity" class="blog-img">
-            <figcaption>DIP switch identity (report Fig. 22).</figcaption>
+            <img src="fig-19-lcd-2004.png" alt="20x4 LCD screen example for detailed distance readout" class="blog-img">
+            <figcaption>20×4 LCD (Report Fig. 19). :contentReference[oaicite:7]{index=7}</figcaption>
           </figure>
         </div>
-        <!-- End Subsection -->
-
       </div>
     </section>
-    <!-- =============== END KEY DECISIONS =============== -->
+    <!-- =============== END OPERATOR EXPERIENCE =============== -->
 
-    <!-- ================= BUILD ================= -->
-    <section class="section blog-section" id="build">
-      <div class="container">
-        <h2>Build Snapshot</h2>
-        <p>
-          We started with a breadboard proof-of-concept, validated basic sensing + UI + I²C, then migrated
-          to a modular harness with GX16-4 connectors and splash-resistant housings.
-        </p>
-        <figure class="blog-figure">
-          <img src="poc-wiring.png" alt="Proof-of-concept wiring of sensors, Arduino Nano, and displays" class="blog-img">
-          <figcaption>Proof-of-concept wiring (report Fig. 17).</figcaption>
-        </figure>
-      </div>
-    </section>
-    <!-- =============== END BUILD =============== -->
-
-    <!-- ================= VALIDATION ================= -->
+    <!-- ================= VALIDATION SUMMARY ================= -->
     <section class="section blog-section" id="validation">
       <div class="container">
-        <h2>Validation Highlights</h2>
+        <h2>Validation Summary</h2>
+
+        <!-- Subsection: Range & accuracy -->
+        <h3>Range & Accuracy</h3>
+        <p>
+          The MVP reliably detects hazards across a ~0.25–3.0&nbsp;m operating band suitable for docking speeds.
+          A three-meter setup test confirmed accurate readings at range and when closing. :contentReference[oaicite:8]{index=8}
+        </p>
+        <figure class="blog-figure">
+          <img src="fig-37-three-meter-test.png" alt="Three-meter distance validation setup with reference target" class="blog-img">
+          <figcaption>Three-meter validation setup (Report Fig. 37). :contentReference[oaicite:9]{index=9}</figcaption>
+        </figure>
+
+        <!-- Subsection: Responsiveness -->
+        <h3>Responsiveness</h3>
+        <p>
+          End-to-end response felt immediate in practice. Step-by-step timing analysis yields ~50&nbsp;ms typical and
+          &lt;90&nbsp;ms worst-case from measurement to display—well below the ~200&nbsp;ms human perception threshold. 
+        </p>
+
+        <!-- Subsection: Robustness via redundancy -->
+        <h3>Robustness & Fault Handling</h3>
+        <p>
+          Each sensor module fuses five sonar readings with majority logic and trend checks, suppressing spikes and
+          outliers. Health states (old/unresponsive) and per-sensor error are surfaced to the operator, so trust in a
+          reading is visible at a glance. :contentReference[oaicite:11]{index=11}
+        </p>
+
+        <!-- Subsection: Environmental durability -->
+        <h3>Environmental Durability (Prototype Level)</h3>
+        <p>
+          Housings include passive weather protection (overhang roof, slanted cover, seal grooves) and achieved practical
+          splash resistance in handling and tests. The report documents the protection features and a roof detail that
+          shields sensors from rain/snow; future work targets higher IP rating and heaters/wipers. 
+        </p>
+        <div class="figure-grid">
+          <figure class="blog-figure">
+            <img src="fig-15-sensor-housing.png" alt="Sensor housing with overhang and slanted roof for weather protection" class="blog-img">
+            <figcaption>Sensor housing design (Report Fig. 15). :contentReference[oaicite:13]{index=13}</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="fig-36-housing-roof.png" alt="Close-up of housing roof feature for added shielding" class="blog-img">
+            <figcaption>Housing roof detail (Report Fig. 36). :contentReference[oaicite:14]{index=14}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- =============== END VALIDATION SUMMARY =============== -->
+
+    <!-- ================= HOW WE GOT HERE (PROGRESS) ================= -->
+    <section class="section blog-section" id="progress">
+      <div class="container">
+        <h2>How We Got to the MVP</h2>
+        <p>
+          We moved from a proof-of-concept to a robust MVP through iterative prototyping and decisions on sensing,
+          UI, modularity, and comms—always driven by validation results and simplicity for retrofit. :contentReference[oaicite:15]{index=15}
+        </p>
+
+        <div class="figure-grid">
+          <figure class="blog-figure">
+            <img src="fig-17-poc-wiring.png" alt="Proof-of-concept wiring harness and display" class="blog-img">
+            <figcaption>Proof of concept (Report Fig. 17). :contentReference[oaicite:16]{index=16}</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="fig-30-sensor-module-final.png" alt="Final sensor module with five sonar units and enclosure" class="blog-img">
+            <figcaption>Sensor module final design (Report Fig. 30). :contentReference[oaicite:17]{index=17}</figcaption>
+          </figure>
+        </div>
+
         <ul class="progress-points">
-          <li><strong>Detection zone:</strong> reliable detection in a 0–3&nbsp;m danger zone suitable for docking speed profiles.</li>
-          <li><strong>Responsiveness:</strong> sub-perceptual target (&lt;200&nbsp;ms) achieved in interactive use; majority voting reduces spurious spikes.</li>
-          <li><strong>Modularity:</strong> hot-adding/removing sensors on the I²C bus supported; DIP-switch identity recognized on boot.</li>
-          <li><strong>Operator UI:</strong> LEDs + beeper draw attention quickly; displays provide extra context when needed.</li>
+          <li><strong>From 2 → 5 sensors:</strong> majority voting improved reliability and reduced false spikes. :contentReference[oaicite:18]{index=18}</li>
+          <li><strong>Operator UI:</strong> LEDs/beeper for reflex cues; LCD for detail when needed. :contentReference[oaicite:19]{index=19}</li>
+          <li><strong>Modularity:</strong> connectorized modules; on-boot identity via DIP switch for install flexibility. :contentReference[oaicite:20]{index=20}</li>
+          <li><strong>Comms:</strong> network design and arbitration support fast updates and priority to the closest hazard. :contentReference[oaicite:21]{index=21}</li>
         </ul>
       </div>
     </section>
-    <!-- =============== END VALIDATION =============== -->
+    <!-- =============== END HOW WE GOT HERE (PROGRESS) =============== -->
 
-    <!-- ================= NEXT STEPS ================= -->
+    <!-- ================= RECOMMENDATIONS & NEXT STEPS ================= -->
     <section class="section blog-section" id="next-steps">
       <div class="container">
-        <h2>Next Steps</h2>
+        <h2>Recommendations & Next Steps</h2>
         <ul class="progress-points">
-          <li><strong>Field trials:</strong> validate on-vehicle at low speeds and near aircraft stand-ins.</li>
-          <li><strong>CAN option:</strong> evaluate a CAN backbone for EMI-heavy environments and priority messaging.</li>
-          <li><strong>Environmental hardening:</strong> elevate IP rating, consider heaters/wipers for snow/ice.</li>
+          <li><strong>Field trials:</strong> test on actual ground vehicles to refine UI thresholds, loudness, and mounting; log edge cases. :contentReference[oaicite:22]{index=22}</li>
+          <li><strong>Environmental hardening:</strong> move to injection-moulded enclosures, conformal coating/potting; target higher IP rating and thermal margins. :contentReference[oaicite:23]{index=23}</li>
+          <li><strong>Network & integration:</strong> evaluate CAN-centric backbone for EMI resilience and standardize interfaces to vehicle systems. :contentReference[oaicite:24]{index=24}</li>
+          <li><strong>Certification pathway:</strong> plan CE/EASA-relevant steps (EMI, electrical safety, mechanical robustness). :contentReference[oaicite:25]{index=25}</li>
+          <li><strong>Scalability:</strong> custom PCBs, streamlined harness, and modular firmware updates for production. :contentReference[oaicite:26]{index=26}</li>
         </ul>
       </div>
     </section>
-    <!-- =============== END NEXT STEPS =============== -->
+    <!-- =============== END RECOMMENDATIONS & NEXT STEPS =============== -->
   </main>
 
   <!-- ================= FOOTER ================= -->
