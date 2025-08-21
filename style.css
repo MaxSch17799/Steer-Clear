@@ -4,11 +4,15 @@ body {
   background: #f9fafb;
   color: #222;
 }
+
+/* Container */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 }
+
+/* Navbar */
 .navbar {
   background: #fff;
   border-bottom: 1px solid #e6e6e6;
@@ -43,7 +47,7 @@ body {
   filter: brightness(0.85);
 }
 
-/* --- Navigation Links Horizontal Layout --- */
+/* Navigation links */
 .nav-links {
   display: flex;
   flex-direction: row;
@@ -80,7 +84,7 @@ body {
   background: #1872d9;
 }
 
-/* --- Dropdown Styling --- */
+/* Dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -142,6 +146,7 @@ body {
   background-color: #145aa3;
 }
 
+/* Mobile adjustments */
 @media (max-width: 900px) {
   .hero-content,
   .solution-content,
@@ -178,6 +183,7 @@ body {
   }
 }
 
+/* Footer */
 .footer {
   background: #222;
   color: #fff;
@@ -188,4 +194,37 @@ body {
   margin-top: 40px;
 }
 
-/* rest of your CSS remains unchanged */
+/* ===== Fixes for your issues ===== */
+:root {
+  --nav-height: 72px; /* tweak if your nav is taller/shorter */
+}
+header.hero,
+section.section {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+.section {
+  padding: 72px 0;
+}
+.section + .section {
+  margin-top: 32px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.hero h1,
+.section h2 {
+  text-align: center;
+  line-height: 1.15;
+  letter-spacing: 0.2px;
+  margin: 0 0 16px;
+}
+.hero h1 {
+  font-size: clamp(32px, 4.5vw, 56px);
+}
+.section h2 {
+  font-size: clamp(24px, 3vw, 36px);
+}
+.subtitle {
+  text-align: center;
+  margin-top: 8px;
+  font-size: clamp(16px, 2vw, 20px);
+  opacity: 0.9;
+}
