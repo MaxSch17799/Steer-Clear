@@ -1,3 +1,4 @@
+/* ===== Global Reset & Base ===== */
 body {
   margin: 0;
   font-family: 'Montserrat', Arial, sans-serif;
@@ -5,14 +6,18 @@ body {
   color: #222;
 }
 
-/* Container */
+:root {
+  --nav-height: 72px; /* adjust if navbar is taller/shorter */
+}
+
+/* ===== Container ===== */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Navbar */
+/* ===== Navbar ===== */
 .navbar {
   background: #fff;
   border-bottom: 1px solid #e6e6e6;
@@ -20,12 +25,15 @@ body {
   top: 0;
   z-index: 100;
 }
+
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 0;
+  flex-wrap: wrap; /* allow wrapping */
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -33,21 +41,24 @@ body {
   font-size: 1.2rem;
   letter-spacing: 1px;
 }
+
 .logo a {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
+
 .logo img {
   margin-right: 12px;
   height: 44px;
   transition: filter 0.2s;
 }
+
 .logo a:hover img {
   filter: brightness(0.85);
 }
 
-/* Navigation links */
+/* ===== Nav Links ===== */
 .nav-links {
   display: flex;
   flex-direction: row;
@@ -56,13 +67,15 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap; /* allow wrapping if space is tight */
 }
+
 .nav-links > li {
-  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 .nav-links > li > a,
 .dropbtn {
   display: inline-block;
@@ -78,32 +91,34 @@ body {
   outline: none;
   cursor: pointer;
 }
-.nav-links > li > a:hover, .nav-links > li > a:focus,
-.dropbtn:hover, .dropbtn:focus {
+
+.nav-links > li > a:hover,
+.nav-links > li > a:focus,
+.dropbtn:hover,
+.dropbtn:focus {
   color: #fff;
   background: #1872d9;
 }
 
-/* Dropdown */
+/* ===== Dropdown ===== */
 .dropdown {
   position: relative;
   display: inline-block;
 }
+
 .dropbtn {
   background-color: #1872d9;
   color: white;
   padding: 8px 22px;
   font-size: 1rem;
-  border: none;
   border-radius: 6px;
-  cursor: pointer;
-  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
+  font-family: 'Montserrat', Arial, sans-serif;
   box-shadow: 0 2px 8px rgba(24, 114, 217, 0.08);
   transition: background 0.2s;
-  margin-left: 0;
   letter-spacing: 0.5px;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -115,13 +130,9 @@ body {
   border-radius: 8px;
   z-index: 10;
   padding: 8px 0;
-  white-space: nowrap;
   list-style: none;
-  margin: 0;
 }
-.dropdown-content li {
-  width: 100%;
-}
+
 .dropdown-content a {
   color: #222;
   padding: 12px 22px;
@@ -129,86 +140,41 @@ body {
   display: block;
   border-radius: 4px;
   transition: background 0.2s, color 0.2s;
-  margin: 0;
   font-weight: 500;
   font-size: 1.01rem;
 }
-.dropdown-content a:hover, .dropdown-content a:focus {
+
+.dropdown-content a:hover,
+.dropdown-content a:focus {
   background-color: #eaf6ef;
   color: #1872d9;
 }
+
 .dropdown:hover .dropdown-content,
 .dropdown:focus-within .dropdown-content {
   display: block;
 }
+
 .dropdown:hover .dropbtn,
 .dropdown:focus-within .dropbtn {
   background-color: #145aa3;
 }
 
-/* Mobile adjustments */
-@media (max-width: 900px) {
-  .hero-content,
-  .solution-content,
-  .team-wrapper {
-    flex-direction: column;
-    text-align: center;
-    gap: 32px;
-  }
-  .hero-img, .solution-img, .team-photo, .team-contact-photo, .blog-img {
-    margin: 30px 0 0 0;
-    max-width: 98vw;
-  }
-  .team-member-card, .team-contact-card {
-    max-width: 95vw;
-    width: 100%;
-  }
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-    padding: 8px 0;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(24, 114, 217, 0.08);
-    position: absolute;
-    top: 68px;
-    right: 8px;
-    border-radius: 8px;
-    min-width: 200px;
-    z-index: 200;
-  }
-  .dropdown-content {
-    left: 0;
-    right: auto;
-  }
-}
-
-/* Footer */
-.footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 22px 0;
-  letter-spacing: 0.3px;
-  font-size: 1rem;
-  margin-top: 40px;
-}
-
-/* ===== Fixes for your issues ===== */
-:root {
-  --nav-height: 72px; /* tweak if your nav is taller/shorter */
-}
+/* ===== Sections ===== */
 header.hero,
 section.section {
   scroll-margin-top: calc(var(--nav-height) + 16px);
 }
+
 .section {
   padding: 72px 0;
 }
+
 .section + .section {
   margin-top: 32px;
   border-top: 1px solid rgba(0,0,0,0.08);
 }
+
 .hero h1,
 .section h2 {
   text-align: center;
@@ -216,23 +182,31 @@ section.section {
   letter-spacing: 0.2px;
   margin: 0 0 16px;
 }
+
 .hero h1 {
   font-size: clamp(32px, 4.5vw, 56px);
 }
+
 .section h2 {
   font-size: clamp(24px, 3vw, 36px);
 }
+
 .subtitle {
   text-align: center;
   margin-top: 8px;
   font-size: clamp(16px, 2vw, 20px);
   opacity: 0.9;
 }
-/* --- Progress page polish --- */
+
+/* ===== Blog & Progress Page ===== */
 .hero--compact .hero-content { padding: 36px 0 8px; }
 .blog-section h2 { text-align: center; margin-bottom: 12px; }
 
-.blog-post, .blog-section p { font-size: 1.05rem; line-height: 1.6; }
+.blog-post,
+.blog-section p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
 
 .blog-img {
   width: 100%;
@@ -242,7 +216,10 @@ section.section {
   margin: 14px 0 6px;
 }
 
-.blog-figure { margin: 18px 0 10px; }
+.blog-figure {
+  margin: 18px 0 10px;
+}
+
 .blog-figure figcaption {
   font-size: 0.92rem;
   opacity: 0.75;
@@ -256,52 +233,49 @@ section.section {
   gap: 18px;
   margin-top: 12px;
 }
+
 @media (max-width: 800px) {
-  .figure-grid { grid-template-columns: 1fr; }
+  .figure-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .progress-points {
   margin: 8px 0 0 0;
   padding-left: 18px;
 }
-.progress-points li { margin: 6px 0; }
-@media (max-width: 900px) {
-  .nav-links {
-    flex-direction: row;      /* keep horizontal */
-    flex-wrap: wrap;          /* allow 2 lines if needed */
-    align-items: center;
-    gap: 10px;
-    position: static;         /* no floating box */
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-  }
+
+.progress-points li {
+  margin: 6px 0;
 }
-/* ===== Mobile nav fix (logo on top, ribbon below) ===== */
+
+/* ===== Footer ===== */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 22px 0;
+  letter-spacing: 0.3px;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
+/* ===== Mobile Adjustments ===== */
 @media (max-width: 900px) {
   .nav-container {
-    flex-direction: column;     /* stack logo + nav */
+    flex-direction: column;   /* logo on top, ribbon below */
     align-items: center;
-    gap: 12px;                  /* space between logo and links */
+    gap: 12px;
   }
 
   .nav-links {
-    flex-direction: row;        /* keep links horizontal */
-    flex-wrap: wrap;            /* allow wrapping onto 2 lines if needed */
-    justify-content: center;    /* center under logo */
+    flex-direction: row;      /* keep ribbon horizontal */
+    flex-wrap: wrap;          /* allow wrapping if needed */
+    justify-content: center;
     gap: 12px;
-    position: static;           /* no absolute positioning */
+    position: static;         /* remove absolute positioning */
     background: transparent;
     box-shadow: none;
     padding: 0;
-    width: 100%;                /* stretch full width */
-  }
-
-  .dropdown-content {
-    position: absolute;         /* dropdown still overlays below button */
-    left: 0;
-    top: 100%;
-    min-width: 180px;
   }
 }
-
