@@ -4,56 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Project Progress | Steer-Clear</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- ================= NAVBAR ================= -->
   <nav class="navbar">
     <div class="container nav-container">
       <div class="logo">
-        <img src="logo-steerclear.png" alt="Steer-Clear Logo" height="44" />
+        <a href="index.html">
+          <img src="logo-steerclear.png" alt="Steer-Clear Logo" height="44" />
+        </a>
       </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-          <button class="dropbtn">Sub Pages ▼</button>
-          <div class="dropdown-content">
-            <a href="contact-alina.html">Contact Alina Krüger</a>
-            <a href="contact-max.html">Contact Maximilian Schimmel</a>
-            <a href="project-progress.html">Project Progress</a>
-          </div>
-        </div>
-      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#top">Home</a></li>
+        <li><a href="index.html#mission">Mission</a></li>
+        <li><a href="index.html#solution">Solution</a></li>
+        <li><a href="index.html#team">Team</a></li>
+        <li class="dropdown">
+          <button class="dropbtn">Menu ▼</button>
+          <ul class="dropdown-content">
+            <li><a href="contact-alina.html">Contact Alina Krüger</a></li>
+            <li><a href="contact-max.html">Contact Maximilian Schimmel</a></li>
+            <li><a href="project-progress.html">Project Progress</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </nav>
+  <!-- =============== END NAVBAR =============== -->
 
-  <section class="section blog-section">
-    <div class="container">
-      <h2>Project Progress</h2>
-      <div class="blog-post">
-        <h3>Milestone 1: Concept Validation</h3>
-        <p class="blog-date">2025-03-30</p>
-        <img src="progress1.jpg" alt="Concept Validation" class="blog-img"/>
-        <p>
-          Our modular warning system prototype has successfully passed initial concept validation at a test ground. Ground crews provided valuable feedback, which we are now integrating into the next iteration.
-        </p>
+  <!-- ================= HERO HEADER ================= -->
+  <header id="top" class="hero hero--compact">
+    <div class="container hero-content">
+      <div>
+        <h1>Project Progress</h1>
+        <p class="subtitle">First MVP — summary of decisions, build, and validation</p>
       </div>
-      <div class="blog-post">
-        <h3>Milestone 2: Sensor Integration</h3>
-        <p class="blog-date">2025-04-28</p>
-        <img src="progress2.jpg" alt="Sensor Integration" class="blog-img"/>
-        <p>
-          The integration of distance sensors and docking assistance modules is underway. Early tests indicate improved detection accuracy and user experience for ground handling staff.
-        </p>
-      </div>
-      <!-- Add more blog posts as needed -->
     </div>
-  </section>
+  </header>
+  <!-- =============== END HERO HEADER =============== -->
 
+  <main>
+    <!-- ================= MVP OVERVIEW ================= -->
+    <section class="section blog-section" id="mvp-overview">
+      <div class="container">
+        <h2>MVP Overview</h2>
+        <p>
+          Our first MVP is a retrofit collision-avoidance aid for ground support vehicles. It uses
+          <strong>multiple ultrasonic sensors</strong> for distance measurement, a simple <strong>audio/visual UI</strong> for the operator,
+          and a <strong>microcontroller-based</strong> architecture designed for low cost, modularity, and fast installation. Power is sourced
+          from the vehicle’s 12–24&nbsp;V system, with wiring kept simple and robust.
+        </p>
+        <figure class="blog-figure">
+          <img src="conceptual-system.png" alt="Conceptual system block-diagram: sensors, master module, operator interface" class="blog-img">
+          <figcaption>Conceptual system (based on report Fig. 7 & Fig. 16).</figcaption>
+        </figure>
+      </div>
+    </section>
+    <!-- =============== END MVP OVERVIEW =============== -->
+
+    <!-- ================= KEY DECISIONS ================= -->
+    <section class="section blog-section" id="key-decisions">
+      <div class="container">
+        <h2>Key Design Decisions</h2>
+
+        <!-- Subsection: Distance Sensing -->
+        <h3>1) Distance Sensing</h3>
+        <p>
+          We evaluated IR/ToF, lidar, radar, and mechanical contact. For MVP we chose
+          <strong>ultrasonic (HC-SR04)</strong> for range (0–5&nbsp;m), accuracy (~±1&nbsp;cm), price, and simplicity.
+          IR/ToF under-performed outdoors and on certain surfaces; lidar/radar were overkill for cost/complexity.
+        </p>
+        <figure class="blog-figure">
+          <img src="sensor-hcsr04.jpg" alt="HC-SR04 ultrasonic distance sensor" class="blog-img">
+          <figcaption>Ultrasonic sensor chosen for MVP (report Fig. 11).</figcaption>
+        </figure>
+        <!-- End Subsection -->
+
+        <!-- Subsection: Redundancy -->
+        <h3>2) Redundancy & Filtering</h3>
+        <p>
+          We moved from 2 to <strong>5 sensors</strong> to enable majority voting and reject outliers. This improved robustness
+          and reduced false readings without complex filtering.
+        </p>
+        <!-- End Subsection -->
+
+        <!-- Subsection: Operator Feedback -->
+        <h3>3) Operator Feedback</h3>
+        <p>
+          The airport environment is noisy and time-critical. We combined <strong>audio beeper + LEDs</strong> for quick attention,
+          and added <strong>OLED + 20×4 LCD</strong> for detailed readouts and future expandability.
+        </p>
+        <div class="figure-grid">
+          <figure class="blog-figure">
+            <img src="display-oled-128x64.jpg" alt="128x64 OLED display" class="blog-img">
+            <figcaption>OLED 128×64 (report Fig. 18).</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="display-lcd-2004.jpg" alt="HD44780 20x4 LCD module" class="blog-img">
+            <figcaption>HD44780 20×4 LCD (report Fig. 19).</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="operator-led-panel.png" alt="Concept sketch of LED panel indicating closest corner" class="blog-img">
+            <figcaption>LED array concept (report Fig. 20).</figcaption>
+          </figure>
+        </div>
+        <!-- End Subsection -->
+
+        <!-- Subsection: Electronics -->
+        <h3>4) Electronics & Comms</h3>
+        <p>
+          Controller: <strong>Arduino Nano V3</strong> (cheap, small, plenty of I/O). Data bus: <strong>I²C</strong> (fast to implement on Nano; CAN considered for later).
+          Physical layer: <strong>wired copper</strong> for reliability and maintainability in the field.
+        </p>
+        <!-- End Subsection -->
+
+        <!-- Subsection: Mounting -->
+        <h3>5) Mounting & Modularity</h3>
+        <p>
+          We designed a <strong>flange-mount sensor housing</strong> with passive weather shielding (overhang + slanted roof) and
+          chose robust <strong>GX16-4 connectors</strong> for plug-and-play. Position identity is set via <strong>DIP switches</strong> to avoid reflashing firmware on repositioning.
+        </p>
+        <div class="figure-grid">
+          <figure class="blog-figure">
+            <img src="mounting-flange.png" alt="3D model of sensor mounting flange" class="blog-img">
+            <figcaption>Mounting flange (report Fig. 13).</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="sensor-housing.png" alt="Weather-shielded sensor housing with overhang" class="blog-img">
+            <figcaption>Weather-shielded housing (report Fig. 15; seals in Fig. 14).</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="connector-gx16-4.jpg" alt="GX16-4 metal circular connector" class="blog-img">
+            <figcaption>GX16-4 connector (report Fig. 21).</figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="dip-switch-id.jpg" alt="DIP switch used for sensor position identity" class="blog-img">
+            <figcaption>DIP switch identity (report Fig. 22).</figcaption>
+          </figure>
+        </div>
+        <!-- End Subsection -->
+
+      </div>
+    </section>
+    <!-- =============== END KEY DECISIONS =============== -->
+
+    <!-- ================= BUILD ================= -->
+    <section class="section blog-section" id="build">
+      <div class="container">
+        <h2>Build Snapshot</h2>
+        <p>
+          We started with a breadboard proof-of-concept, validated basic sensing + UI + I²C, then migrated
+          to a modular harness with GX16-4 connectors and splash-resistant housings.
+        </p>
+        <figure class="blog-figure">
+          <img src="poc-wiring.png" alt="Proof-of-concept wiring of sensors, Arduino Nano, and displays" class="blog-img">
+          <figcaption>Proof-of-concept wiring (report Fig. 17).</figcaption>
+        </figure>
+      </div>
+    </section>
+    <!-- =============== END BUILD =============== -->
+
+    <!-- ================= VALIDATION ================= -->
+    <section class="section blog-section" id="validation">
+      <div class="container">
+        <h2>Validation Highlights</h2>
+        <ul class="progress-points">
+          <li><strong>Detection zone:</strong> reliable detection in a 0–3&nbsp;m danger zone suitable for docking speed profiles.</li>
+          <li><strong>Responsiveness:</strong> sub-perceptual target (&lt;200&nbsp;ms) achieved in interactive use; majority voting reduces spurious spikes.</li>
+          <li><strong>Modularity:</strong> hot-adding/removing sensors on the I²C bus supported; DIP-switch identity recognized on boot.</li>
+          <li><strong>Operator UI:</strong> LEDs + beeper draw attention quickly; displays provide extra context when needed.</li>
+        </ul>
+      </div>
+    </section>
+    <!-- =============== END VALIDATION =============== -->
+
+    <!-- ================= NEXT STEPS ================= -->
+    <section class="section blog-section" id="next-steps">
+      <div class="container">
+        <h2>Next Steps</h2>
+        <ul class="progress-points">
+          <li><strong>Field trials:</strong> validate on-vehicle at low speeds and near aircraft stand-ins.</li>
+          <li><strong>CAN option:</strong> evaluate a CAN backbone for EMI-heavy environments and priority messaging.</li>
+          <li><strong>Environmental hardening:</strong> elevate IP rating, consider heaters/wipers for snow/ice.</li>
+        </ul>
+      </div>
+    </section>
+    <!-- =============== END NEXT STEPS =============== -->
+  </main>
+
+  <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
       <span>&copy; 2025 Steer-Clear. All rights reserved.</span>
     </div>
   </footer>
+  <!-- =============== END FOOTER =============== -->
 </body>
 </html>
