@@ -279,3 +279,67 @@ section.section {
     padding: 0;
   }
 }
+/* === Centering helpers === */
+.center-text { text-align: center; }
+.center-img  { display: block; margin-left: auto; margin-right: auto; }
+
+/* === Hero centering & scaling === */
+.hero-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap; /* allow text and image to stack on small screens */
+  text-align: center;
+}
+.hero-text { max-width: 720px; margin-inline: auto; }
+.hero-img {
+  max-width: min(780px, 100%);
+  height: auto;
+}
+
+/* === Solution section layout (image removed, keep content centered) === */
+.solution-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.solution-copy { max-width: 800px; margin-inline: auto; }
+
+/* === Team: side-by-side cards with responsive fall-back === */
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 800px) {
+  .grid-two { grid-template-columns: 1fr; }
+}
+
+.team-member-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.team-photo {
+  width: 220px;         /* keeps photos from being huge */
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;    /* avoids weird cropping */
+  margin-bottom: 12px;
+}
+
+/* Make all section images scale nicely on small screens */
+.blog-img, .team-photo, .hero-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Optional: slightly narrower text for nicer centering on big screens */
+.section .container, .hero .container { max-width: 1100px; }
